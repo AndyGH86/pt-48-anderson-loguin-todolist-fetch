@@ -249,11 +249,27 @@ ul li {
   font-size: 18px;
 }
 .input_todo {
-  width: 98%;
-  margin-right: 3px;
+  width: 100%;
+  padding: 12px 18px;
+  font-size: 16px;
+  font-family: inherit;
+  box-shadow: 0 0 0 1px #f8bfbf;
   border: none;
-  background-color: whitesmoke;
+  
+  background-color:whitesmoke;
+  transition: all .3s;
 }
+.input_todo::placeholder {
+  color:#ebd8d9;
+  font-size: 20px;
+  font-weight: 800;
+}
+.input_todo:focus {
+  outline: none;
+  box-shadow: 0 0 10px 1px #ee8c8c;
+  border: none;
+  transition: all .3s;
+ }
 .button_todo {
   border: none;
   background-color: whitesmoke;
