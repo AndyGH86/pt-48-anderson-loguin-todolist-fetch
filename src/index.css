@@ -263,7 +263,7 @@ ul li {
   
 }
 .button_todo:hover {
-  background: rgba(170, 170, 170, 0.062);
+  background: rgba(170, 170, 170, 0.62);
   transition: 0.5s;
 }
 

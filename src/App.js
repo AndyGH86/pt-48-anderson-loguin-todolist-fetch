@@ -5,6 +5,7 @@ import './App.css';
 
 function App() {
   const [username, setUsername] = useState('');
+  const [newUser, setNewUser] = useState('');
   const [password, setPassword] = useState('');
   const [credentials, setCredentials] = useState({
     username: '',
@@ -28,12 +29,14 @@ function App() {
     setIsThereSession(credentials.username && credentials.password);
     setIsLoading(false);
     setLoggedToDo(true);
+    setNewUser();
     await obtenerInfoServer();
   };
   const SERVER_URL =
     'https://playground.4geeks.com/apis/fake/todos/user/';
   const GET_HTTP_METHOD = 'GET';
   const PUT_HTTP_METHOD = 'PUT';
+  const POST_HTTP_METHOD = 'POST';
   
 
   const obtenerInfoServer = async () => {
@@ -41,6 +44,16 @@ function App() {
     const data = await response.json();
     setList(data);
   };
+  const createNewuser = async () => {
+    await fetch(`${SERVER_URL}${username}`, {
+      method: POST_HTTP_METHOD,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify([]),
+    });
+    await obtenerInfoServer();
+  };
+
+  
   
   const createNewTodo = async (label) => {
     const newTodo = { label, id: '', done: false };
@@ -68,7 +81,7 @@ function App() {
     obtenerInfoServer();
   }, []);
 
-  return (
+  return(
     <>
       <div className="app__container">
         <div className="login-container">
@@ -89,6 +102,17 @@ function App() {
                 }>
                 Sign in
               </button>
+              <input className="input_loguin"
+                type="text"
+                placeholder="New User"
+                onChange={(e) => setUsername(e.target.value)}
+              />
+              <button className="signin-button" onClick={() =>{
+                createNewuser();
+                login();
+              }}>
+                Create New User
+                  </button>
             </>
           )}
           {isLoading && !loggedToDo && (
@@ -135,6 +159,6 @@ function App() {
       </div>
     </>
   );
-}
+  }
 
 export default App;
