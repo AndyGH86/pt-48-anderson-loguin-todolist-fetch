@@ -62,8 +62,8 @@ body {
  .input_loguin {
   --input-focus: rgb(252, 70, 100);
   --font-color: #fefefe;
-  --font-color-sub: #7e7e7e;
-  --bg-color: #111111;
+  --font-color-sub: ;
+  --bg-color: #066fa2;
   --main-color: #fefefe;
   width: 200px;
   height: 40px;
